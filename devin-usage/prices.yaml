@@ -1,0 +1,211 @@
+# Model per-token pricing (USD per 1M tokens)
+# Source: Devin official — https://docs.devin.ai/desktop/models
+# Fetched: 2026-08-21
+# Keyed by the `model` column in sessions.db (Devin model_uid).
+#
+# Dimensions:
+#   input       — input tokens (non-cached)
+#   cache_read  — cached input tokens (prompt cache hit)
+#   cache_write — prompt cache write tokens (0 if not separately billed)
+#   output      — output tokens
+#   credit_multiplier — Devin enterprise credit multiplier (for reference)
+
+models:
+  glm-5-2:
+    display: GLM-5.2 High
+    provider: ZAI
+    input: 1.40
+    cache_read: 0.26
+    cache_write: 0
+    output: 4.40
+    credit_multiplier: 1.5
+
+  glm-5-3-flash-high:
+    display: GLM-5.3 Flash High
+    provider: ZAI
+    # 官方价目表未单列 Flash 档，价格由用户提供
+    input: 0.15
+    cache_read: 0.01
+    cache_write: 0
+    output: 0.50
+    credit_multiplier: 0.5 # 未确认，仅供参考
+
+  gpt-5-6-sol-high:
+    display: GPT-5.6 Sol High Thinking
+    provider: OpenAI
+    # 实际按官方价 3 折计费（30%）
+    input: 1.50
+    cache_read: 0.15
+    cache_write: 1.875
+    output: 9.00
+    credit_multiplier: 90
+    official_input: 5.00
+    official_cache_read: 0.50
+    official_cache_write: 6.25
+    official_output: 30.00
+    discount: 0.3
+
+  gpt-5-6-luna-medium:
+    display: GPT-5.6 Luna Medium Thinking
+    provider: OpenAI
+    input: 0.20
+    cache_read: 0.02
+    cache_write: 0.25
+    output: 1.20
+    credit_multiplier: 5
+
+  deepseek-v4-pro-high:
+    display: DeepSeek V4 Pro High
+    provider: DeepSeek
+    input: 1.74
+    cache_read: 0.15
+    cache_write: 0
+    output: 3.48
+    credit_multiplier: 3
+
+  deepseek-v4-flash-high:
+    display: DeepSeek V4 Flash High
+    provider: DeepSeek
+    input: 0.14
+    cache_read: 0.028
+    cache_write: 0
+    output: 0.28
+    credit_multiplier: 0.5
+
+  kimi-k3-high:
+    display: Kimi K3 High
+    provider: Moonshot
+    input: 3.00
+    cache_read: 0.30
+    cache_write: 0
+    output: 15.00
+    credit_multiplier: 6
+
+  claude-sonnet-4-6:
+    display: Claude Sonnet 4.6
+    provider: Anthropic
+    input: 3.00
+    cache_read: 0.30
+    cache_write: 3.75
+    output: 15.00
+    credit_multiplier: 4
+
+  swe-1-7-medium:
+    display: SWE-1.7 Medium
+    provider: Cognition
+    input: 0.50
+    cache_read: 0.20
+    cache_write: 0
+    output: 2.50
+    credit_multiplier: 3
+
+  # --- Added 2026-09-15 from docs.devin.ai/desktop/models (Enterprise SaaS tier) ---
+
+  swe-1-6-fast:
+    display: SWE-1.6 Fast
+    provider: Cognition
+    input: 0.50
+    cache_read: 0.20
+    cache_write: 0
+    output: 2.50
+    credit_multiplier: 3
+
+  swe-1-7-lightning-medium:
+    display: SWE-1.7 Lightning Medium
+    provider: Cognition
+    input: 2.50
+    cache_read: 1.00
+    cache_write: 0
+    output: 12.50
+    credit_multiplier: 9
+
+  swe-2-high:
+    display: SWE-2 High
+    provider: Cognition
+    input: 0.75
+    cache_read: 0.075
+    cache_write: 0
+    output: 3.75
+    credit_multiplier: 9
+
+  swe-2-max:
+    display: SWE-2 Max
+    provider: Cognition
+    input: 0.75
+    cache_read: 0.075
+    cache_write: 0
+    output: 3.75
+    credit_multiplier: 12
+
+  swe-2-medium:
+    display: SWE-2 Medium
+    provider: Cognition
+    input: 0.75
+    cache_read: 0.075
+    cache_write: 0
+    output: 3.75
+    credit_multiplier: 6
+
+  glm-5-3-high:
+    display: GLM-5.3 High
+    provider: ZAI
+    input: 1.40
+    cache_read: 0.26
+    cache_write: 0
+    output: 4.40
+    credit_multiplier: 1
+
+  glm-5-3-flash-max:
+    display: GLM-5.3 Flash Max
+    provider: ZAI
+    input: 0.15
+    cache_read: 0.029
+    cache_write: 0
+    output: 0.50
+    credit_multiplier: 1
+
+  gemini-3-8-flash-high:
+    display: Gemini 3.8 Flash High
+    provider: Google
+    input: 1.50
+    cache_read: 0.15
+    cache_write: 1.50
+    output: 7.50
+    credit_multiplier: 10
+
+  gemini-3-8-flash-medium:
+    display: Gemini 3.8 Flash Medium
+    provider: Google
+    input: 1.50
+    cache_read: 0.15
+    cache_write: 1.50
+    output: 7.50
+    credit_multiplier: 8
+
+  claude-opus-5-medium:
+    display: Claude Opus 5 Medium
+    provider: Anthropic
+    input: 5.00
+    cache_read: 0.50
+    cache_write: 6.25
+    output: 25.00
+    credit_multiplier: 80
+
+  gpt-5-6-sol-medium:
+    display: GPT-5.6 Sol Medium Thinking
+    provider: OpenAI
+    input: 4.00
+    cache_read: 0.40
+    cache_write: 5.00
+    output: 20.00
+    credit_multiplier: 50
+
+  deepseek-v4-1-flash-high:
+    display: DeepSeek V4.1 Flash High
+    provider: DeepSeek
+    # 官方价目表未列 V4.1，暂按 V4 Flash High 价格
+    input: 0.14
+    cache_read: 0.028
+    cache_write: 0
+    output: 0.28
+    credit_multiplier: 0.5
